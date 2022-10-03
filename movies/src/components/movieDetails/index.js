@@ -5,6 +5,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import { ProductionQuantityLimits } from "@mui/icons-material";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 
@@ -56,6 +57,7 @@ const MovieDetails = ( props) => {
           label={`${movie.vote_average} (${movie.vote_count}`}
         />
         <Chip label={`Released: ${movie.release_date}`} />
+        <Chip label = {`production country:${movie.ProductionQuantityLimits}` }/>
       </Paper>
       <Fab
         color="secondary"
