@@ -54,12 +54,18 @@ describe("Filtering", () => {
     });
   });
   describe("Combined genre and title", () => {
-    it("should display movies with the specified title and genre only", () => {
-        const searchString = "d";
-        const selectedGenreId = 35;
-        const matchingGenres = filterByGenre(movies, selectedGenreId);
-        const matchingMovies = filterByTitle(matchingGenres, searchString);  
+    it("should only display movies with spider in the title, in the genre comedy", () => {
+        let searchString = "spider";
+        const selectedGenreText = "Action";
+        cy.get("#genre-select").click();
+        cy.get("li").contains(selectedGenreText).click();
+        let matchingMovies = filterByTitle(movies, searchString);
+        cy.get("#filled-search").clear().type(searchString); // Enter m in text box
+        cy.get(".MuiCardHeader-content").should(
+          "have.length",
+          matchingMovies.length
+        );
        
-        });
+      });
     }); 
   });
