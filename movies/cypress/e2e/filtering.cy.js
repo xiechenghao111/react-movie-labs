@@ -54,6 +54,12 @@ describe("Filtering", () => {
     });
   });
   describe("Combined genre and title", () => {
-    // TODO
+    it("should display movies with the specified title and genre only", () => {
+        const searchString = "d";
+        const selectedGenreId = 35;
+        const matchingGenres = filterByGenre(movies, selectedGenreId);
+        const matchingMovies = filterByTitle(matchingGenres, searchString);  
+       
+        });
+    }); 
   });
-});
