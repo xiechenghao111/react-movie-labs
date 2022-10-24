@@ -61,14 +61,14 @@ const styles = {
 
 const ReviewForm = ({ movie }) => {
     const context = useContext(MoviesContext);
-
+    const [open, setOpen] = useState(false); 
+    const navigate = useNavigate();
+    const handleSnackClose = (event) => {
+        setOpen(false);
+        navigate("/movies/favorites");
+      };
   const [rating, setRating] = useState(3);
-  const [open, setOpen] = useState(false); 
-  const navigate = useNavigate();
-  const handleSnackClose = (event) => {
-    setOpen(false);
-    navigate("/movies/favorites");
-  };
+  
   const defaultValues = {
     author: "",
     review: "",
