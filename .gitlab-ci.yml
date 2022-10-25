@@ -1,3 +1,23 @@
+image: node:latest
 
-  include: 
-    - local: '/movies/.gitlab-ci.yml'
+# Pipeline
+stages:
+  - install
+  - build
+
+# Jobs 
+install_dependencies:
+  stage: install
+  script:
+    - cd movies
+    - npm ci
+  artifacts:
+    paths:
+      - node_modules/
+
+bundle_app:
+  stage: build
+  script:
+    - npm run build
+include: 
+- local: '/movies/.gitlab-ci.yml'

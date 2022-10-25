@@ -21,4 +21,4 @@ bundle_app:
     - npm run build
 
 include: 
-  - local: '/movies/.gitlab-ci.yml'
+- local: '/movies/.gitlab-ci.yml'
