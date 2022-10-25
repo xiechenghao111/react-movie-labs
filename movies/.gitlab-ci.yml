@@ -19,5 +19,6 @@ bundle_app:
   stage: build
   script:
     - npm run build
-    
- local: '/movies/.gitlab-ci.yml'
+  
+include:
+  -  local: '/movies/.gitlab-ci.yml'
