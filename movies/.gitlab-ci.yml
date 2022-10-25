@@ -9,6 +9,7 @@ stages:
 install_dependencies:
   stage: install
   script:
+    - cd movies
     - npm ci
   artifacts:
     paths:
