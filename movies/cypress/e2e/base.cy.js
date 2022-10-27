@@ -48,7 +48,8 @@ describe("Base tests", () => {
     it(" displays the movie title, overview and genres and ", () => {
       cy.get("h3").contains(movie.title);
       cy.get("h3").contains("Overview");
-      cy.get("h3").next().contains(movie.overview);
+      console.log(cy.get("h3"));
+      cy.get("h3").contains("Overview");
       cy.get("ul")
         .eq(1)
         .within(() => {
