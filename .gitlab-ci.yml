@@ -56,3 +56,11 @@ build_jobX:
     - develop
   script:
     - echo "build job X on demoBranch works"
+
+test_jobX:
+  stage: test
+  only:
+    - main
+    - branchX
+  script:
+    - echo "Run test job X"
