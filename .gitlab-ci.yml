@@ -4,7 +4,7 @@ image: node:latest
 stages:
   - install
   - build
-  - exercise
+  - chenghao
   - test
 variables:
    npm_config_cache: "$CI_PROJECT_DIR/movies/.npm"
@@ -56,6 +56,14 @@ build_jobX:
     - cd movies
     - echo "build job X on demoBranch works"
 
+chenghao_jobx:
+  stage: chenghao
+  only:
+    - main
+  script:
+    - cd movies
+    - echo "chenghao job X"
+
 test_jobX:
   stage: test
   only:
@@ -64,3 +72,4 @@ test_jobX:
   script:
     - cd movies
     - echo "Run test job X"
+  
