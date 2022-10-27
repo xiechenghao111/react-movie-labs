@@ -4,6 +4,7 @@ image: node:latest
 stages:
   - install
   - build
+  - exercise
   - test
 variables:
    npm_config_cache: "$CI_PROJECT_DIR/movies/.npm"
@@ -12,7 +13,7 @@ variables:
 cache:
    key:
      files:
-        - movies/package.json
+      - movies/package.json
    paths:
       - movies/.npm
       - movies/cache/Cypress
@@ -47,11 +48,10 @@ e2etest:
     - echo "Run tests in headless mode"
     - npm run start:ci
 
-
-  
 build_jobX:
   stage: build
   only:
     - develop
   script:
+    - cd movies
     - echo "build job X on demoBranch works"
