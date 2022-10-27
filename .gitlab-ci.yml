@@ -8,7 +8,7 @@ stages:
   - test
 variables:
    npm_config_cache: "$CI_PROJECT_DIR/movies/.npm"
-   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/movies/Cypress"
+   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/movies/cache/Cypress"
 
 cache:
    key:
