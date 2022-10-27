@@ -40,11 +40,13 @@ e2etest:
 image: cypress/browsers:node12.14.1-chrome85-ff81
 stage: test
 script:
+  - cd movies
   - echo "Run tests in headless mode"
   - npm run start:ci
 bundle_app:
   stage: build
   script:
+    - cd movies
     - npm run build
   artifacts:
     paths:
