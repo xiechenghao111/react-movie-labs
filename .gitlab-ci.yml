@@ -34,6 +34,9 @@ bundle_app:
   script:
     - cd movies
     - npm run build
+  artifacts:
+    paths:
+      - movies/build/
    
 e2etest:
 # Node docker image with Cypress and Chrome pre-installed
@@ -43,12 +46,12 @@ e2etest:
     - cd movies
     - echo "Run tests in headless mode"
     - npm run start:ci
-bundle_app:
-  stage: build
-  script:
-    - cd movies
-    - npm run build
-  artifacts:
-    paths:
-      - build/
+
+
   
+build_jobX:
+  stage: build
+  only:
+    - develop
+  script:
+    - echo "build job X on demoBranch works"
