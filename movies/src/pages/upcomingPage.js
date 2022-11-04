@@ -6,7 +6,7 @@ import { getupcomingMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 
 const UpcomingPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('discover', getupcomingMovie)
+  const {  data, error, isLoading, isError }  = useQuery('upcoming', getupcomingMovie)
 
   if (isLoading) {
     return <Spinner />
