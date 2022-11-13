@@ -78,5 +78,6 @@ export default function MovieCard({ movie, action }) {
         </Link>
       </CardActions>
     </Card>
+    
   );
 }

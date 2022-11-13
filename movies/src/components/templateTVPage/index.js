@@ -1,11 +1,12 @@
 import React from "react";
-import TVHeader from "../headerPeople";
+import TVHeader from "../headerTV";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { getTVImage } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+
 const TemplateTVPage = ({ TV, children }) => {
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: TV.id }],
@@ -20,7 +21,7 @@ const TemplateTVPage = ({ TV, children }) => {
     return <h1>{error.message}</h1>;
   }
   const images = data.posters
-
+  console.log(data)
   return (
     <>
       <TVHeader TV={TV} />

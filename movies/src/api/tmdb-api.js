@@ -119,6 +119,23 @@ export const getMovie = (args) => {
                throw error
             });
           };  
+
+          export const getTVdetail = (args) => {
+            // console.log(args)
+            const [, idPart] = args.queryKey;
+            const { id } = idPart;
+            return fetch(
+              `https://api.themoviedb.org/3/tv/${id}?api_key=cd337e2cdf6450aa6801acff1fa9bee5&language=en-US`
+            ).then((response) => {
+              if (!response.ok) {
+                throw new Error(response.json().message);
+              }
+              return response.json();
+            })
+            .catch((error) => {
+              throw error
+           });
+          };
         
   export const getGenres = async () => {
     return fetch(
@@ -135,23 +152,34 @@ export const getMovie = (args) => {
       throw error
    });
   };
-  export const getTVImages = ({ queryKey }) => {
-    const [, idPart] = queryKey;
-    const { id } = idPart;
+  export const getTVGenres = async () => {
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}/images?api_key=cd337e2cdf6450aa6801acff1fa9bee5&language=en-US`
+      "https://api.themoviedb.org/3/genre/tv/list?api_key=cd337e2cdf6450aa6801acff1fa9bee5&language=en-US"
     ).then( (response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
       }
       return response.json();
-  
     })
     .catch((error) => {
       throw error
    });
   };
-  
+  export const getTVImage = (args) => {
+    const [, idPart] = args.queryKey;
+    const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/images?api_key=cd337e2cdf6450aa6801acff1fa9bee5&language=en-US`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
   
   export const getMovieImages = ({ queryKey }) => {
     const [, idPart] = queryKey;
@@ -168,6 +196,16 @@ export const getMovie = (args) => {
     .catch((error) => {
       throw error
    });
+  };
+  export const getTVReviews = (id) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=cd337e2cdf6450aa6801acff1fa9bee5&language=en-US&page=1`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        // console.log(json.results);
+        return json.results;
+      });
   };
   export const getMovieReviews = (id) => {
     return fetch(
