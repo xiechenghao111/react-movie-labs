@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Paper from "@mui/material/Paper";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import Drawer from "@mui/material/Drawer";
 
-import Fab from "@mui/material/Fab";
+
+
 import Typography from "@mui/material/Typography";
-import PeopleReviews from "../peopleReviews";
+
 
 
 const root = {
@@ -19,7 +18,7 @@ const root = {
 
 
 const PeopleDetails = ({ people }) => {  // Don't miss this!
-  const [drawerOpen, setDrawerOpen] = useState(false);
+ 
 
   return (
     <>
@@ -41,22 +40,8 @@ const PeopleDetails = ({ people }) => {  // Don't miss this!
       <Paper component="ul" sx={{...root}}>
         
       </Paper>
-      <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() =>setDrawerOpen(true)}
-        sx={{
-          position: 'fixed',
-          bottom: '1em',
-          right: '1em'
-        }}
-      >
-        <NavigationIcon />
-        Reviews
-      </Fab>
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <PeopleReviews movie={people} />
-      </Drawer>
+     
+     
       </>
   );
 };
