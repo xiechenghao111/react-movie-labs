@@ -16,8 +16,7 @@ const UpcomingPage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const movies = data.results;
-  const favorites = movies.filter(m => m.favorite)
-  localStorage.setItem('favorites', JSON.stringify(favorites))
+  
  // const addToFavorites = (movieId) => true 
   
   

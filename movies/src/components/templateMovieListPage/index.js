@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
+import AddPagination from "../pagination";
+
 
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
+  const  setCurrentPage = useState(1);
+ const paginate = (pageNumber) =>setCurrentPage(pageNumber);
 
+  
   let displayedMovies = movies
     .filter((m) => {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
@@ -37,7 +42,10 @@ function MovieListPageTemplate({ movies, title, action }) {
         </Grid>
         <MovieList action={action} movies={displayedMovies}></MovieList>
       </Grid>
+      <AddPagination paginate ={paginate} />
     </Grid>
+    
+    
   );
 }
 export default MovieListPageTemplate;

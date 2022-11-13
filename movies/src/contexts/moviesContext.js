@@ -15,6 +15,8 @@ const MoviesContextProvider = (props) => {
     }
     setFavorites(newFavorites)
   };
+
+  
   const [myReviews, setMyReviews] = useState( {} ) 
 
   // We will use this function in a later section
