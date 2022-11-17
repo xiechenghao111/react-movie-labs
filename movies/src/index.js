@@ -17,7 +17,11 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import TVPage from "./pages/TVPage";
 import TVDetailPage from "./pages/TVDetailPage";
+import LoginPage from "./pages/loginPage";
+import {Auth0Provider} from '@auth0/auth0-react';
 
+const domain = "dev-pzisdborxrj0a5oh.us.auth0.com";
+const clientId = "8MsTeoQMGxIqYKQuv4W0osa6N15guUBE";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -27,6 +31,7 @@ const queryClient = new QueryClient({
     },
   },
 });
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -45,6 +50,7 @@ const App = () => {
       <Route path="/TV/:id" element= {<TVDetailPage/>}/>
       <Route path="/movies/:id" element={<MoviePage />} />
       <Route path="/:page" element={<HomePage />} />
+      <Route path="/login" element ={<LoginPage/>}/>
       <Route path="*" element={ <Navigate to="/1" /> } />
 
     </Routes>
@@ -55,4 +61,14 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <React.StrictMode>
+    <Auth0Provider
+      domain = {domain}
+      clientId = {clientId}
+      redirectUri = {window.location.origin}>
+<App />
+</Auth0Provider>
+</React.StrictMode>
+,document.getElementById("root")
+);

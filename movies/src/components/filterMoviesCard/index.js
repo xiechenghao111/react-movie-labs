@@ -11,6 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres } from "../../api/tmdb-api";
+import { getkeywords } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 const formControl =
@@ -22,7 +23,7 @@ const formControl =
 
 export default function FilterMoviesCard(props) {
 
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { data, error, isLoading, isError } = useQuery("genres", getGenres, "keywords",getkeywords);
 
   if (isLoading) {
     return <Spinner />;
@@ -31,9 +32,14 @@ export default function FilterMoviesCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+  
   const genres = data.genres;
   if (genres[0].name !== "All"){
     genres.unshift({ id: "0", name: "All" });
+  }
+  const keywords = data.genres;
+  if (keywords[0].name !== "All"){
+    keywords.unshift({ id: "0", name: "All" });
   }
 
   const handleChange = (e, type, value) => {
@@ -47,6 +53,10 @@ export default function FilterMoviesCard(props) {
 
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
+  };
+
+  const handleKeywordsChange = (e) => {
+    handleChange(e, "keywords", e.target.value);
   };
   return (
     <Card
@@ -82,6 +92,24 @@ export default function FilterMoviesCard(props) {
               return (
                 <MenuItem key={genre.id} value={genre.id}>
                   {genre.name}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+        <FormControl sx={{ ...formControl }}>
+          <InputLabel id="keywords-label">keywords</InputLabel>
+          <Select
+            labelId="keywords-label"
+            id="keywords-select"
+            defaultValue=""
+            value={props.keywordsFilter}
+            onChange={handleKeywordsChange}
+          >
+            {keywords.map((keywords) => {
+              return (
+                <MenuItem key={keywords.id} value={keywords.id}>
+                  {keywords.name}
                 </MenuItem>
               );
             })}

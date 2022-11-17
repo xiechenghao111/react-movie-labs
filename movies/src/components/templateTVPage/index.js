@@ -3,14 +3,14 @@ import TVHeader from "../headerTV";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { getTVImage } from "../../api/tmdb-api";
+import { getSimilarTVshows } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
 const TemplateTVPage = ({ TV, children }) => {
   const { data , error, isLoading, isError } = useQuery(
-    ["images", { id: TV.id }],
-    getTVImage
+    ["similarTVshows", { id: TV.id }],
+    getSimilarTVshows
   );
 
   if (isLoading) {
@@ -20,7 +20,7 @@ const TemplateTVPage = ({ TV, children }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const images = data.posters
+  const shows = data.results
   console.log(data)
   return (
     <>
@@ -35,11 +35,11 @@ const TemplateTVPage = ({ TV, children }) => {
           }}>
             <ImageList 
                 cols={1}>
-                {images.map((image) => (
-                    <ImageListItem key={image.file_path} cols={1}>
+                {shows.map((shows) => (
+                    <ImageListItem key={shows.poster_path} cols={1}>
                     <img
-                        src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                        alt={image.posters}
+                        src={`https://image.tmdb.org/t/p/w500/${shows.poster_path}`}
+                        alt={shows.results}
                     />
                     </ImageListItem>
                 ))}

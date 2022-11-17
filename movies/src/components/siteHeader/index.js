@@ -24,12 +24,14 @@ const SiteHeader = ({ history }) => {
   const navigate = useNavigate();
 
   const menuOptions = [
+    { label: "Login", path:"/login"},
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Toprated", path: "/movies/toprated" },
     { label: "People", path: "/movies/people" },
-    { label: "TV", path:"/movies/TV"}
+    { label: "TV", path:"/movies/TV"},
+    
   ];
 
   const handleMenuSelect = (pageURL) => {

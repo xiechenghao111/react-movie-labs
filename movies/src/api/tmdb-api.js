@@ -165,11 +165,12 @@ export const getMovie = (args) => {
       throw error
    });
   };
-  export const getTVImage = (args) => {
+  export const getSimilarTVshows = (args) => {
+    // console.log(args)
     const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}/images?api_key=cd337e2cdf6450aa6801acff1fa9bee5&language=en-US`
+      `https://api.themoviedb.org/3/tv/${id}/similar?api_key=cd337e2cdf6450aa6801acff1fa9bee5&language=en-US&page=1`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -180,6 +181,23 @@ export const getMovie = (args) => {
       throw error
    });
   };
+  export const getkeywords = (args) => {
+    // console.log(args)
+    const [, idPart] = args.queryKey;
+    const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/keyword/${id}/movies?api_key=<<api_key>>&language=en-US&include_adult=false`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+
   
   export const getMovieImages = ({ queryKey }) => {
     const [, idPart] = queryKey;
