@@ -6,6 +6,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { getPeopleImage } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+
 const TemplateMoviePage = ({ people, children }) => {
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: people.id }],

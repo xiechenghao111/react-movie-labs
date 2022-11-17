@@ -4,7 +4,7 @@ Name: chenghao xie
 
 ## Overview.
 
-The content of this repository is a react movie app, this app have movie page, people page and TV page. And the movie page contains upcoming movie page and high score movie page. App can query movies in the filter card and view movies by category. In the moviecard, you can check the detailed information of the movie and put the movie into favorites. Favorite movies can also be deleted or commented on. You can also view reviews on the detailed information page. At the head of page, there is an arrow sign, click to go to the previous page and return. The page aer also paginated, and there are more than 500 pages in total. The filter card on the movie page can query the language filter. On the TV detail page, since there are almost no posters for get TV image, replace it with similar TV shows.
+The content of this repository is a react movie app, this app have movie page, people page and TV page. And the movie page contains upcoming movie page and high score movie page. App can query movies in the filter card and view movies by category. In the moviecard, you can check the detailed information of the movie and put the movie into favorites. Favorite movies can also be deleted or commented on. You can also view reviews on the detailed information page. At the head of page, there is an arrow sign, click to go to the previous page and return. The page aer also paginated, and there are more than 500 pages in total. The filter card on the movie page can query the language filter. On the TV detail page, since there are almost no posters for get TV image, replace it with similar TV shows. Finally, I add the third-part authentication, use Auth0 to authenticate the login.
 
 ### Features.
 
@@ -16,6 +16,10 @@ The content of this repository is a react movie app, this app have movie page, p
 + Feature 6  Add the review on the TV detail page
 + Feature 7  Add a new filter function 
 + Feature 8  Add the pagination of page
++ Feature 9  Add the third-party authentication
+
+## Setup requirements.
+You need to install npm install @auth0/auth0-react, the SDK exposes methods and variables that help you integrate Auth0 with your React application idiomatically using React Hooks or Higher-Order Components. 
 
 ## API endpoints.
 + Toprated movie page - /movie/top_rated
@@ -35,5 +39,7 @@ The content of this repository is a react movie app, this app have movie page, p
 + /movies/tv - displays tv page.
 + /people/:id- displays PeopleDetailPage.
 + /TV/:id- displays TVDetailPage and can query review.
++ /login- dispaly the login button to the Auth0
 + /:page - displays the pagename page of the movielist by the pagination.
 + /1 and / *- because the homepage is the first page of the all the pages, so change the homepage adderss to /1 and any error address back to the homepage.
+

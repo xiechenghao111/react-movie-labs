@@ -20,8 +20,8 @@ import TVDetailPage from "./pages/TVDetailPage";
 import LoginPage from "./pages/loginPage";
 import {Auth0Provider} from '@auth0/auth0-react';
 
-const domain = "dev-pzisdborxrj0a5oh.us.auth0.com";
-const clientId = "8MsTeoQMGxIqYKQuv4W0osa6N15guUBE";
+const domain = "dev-emaoq2008zqrl4p3.uk.auth0.com";
+const clientId = "232E8LCYVa6I2V4TBf7mR0lHnx9W2nUq";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
